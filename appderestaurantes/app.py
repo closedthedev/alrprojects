@@ -16,10 +16,16 @@ print('[4] para sair\n')
 escolha_usuário = int(input('Digite a sua opção: '))
 
 if escolha_usuário == 1 :
-    print(f'Você escolheu cadastrar o seu restaurante no nosso sistema, seja bem-vindo!')
+    print(f'Você escolheu a opção {escolha_usuário} para cadastrar o seu restaurante no nosso sistema, seja bem-vindo!')
 
-if escolha_usuário == 2:
-    print(f'Você escolheu listar o seu restaurante!')
+elif escolha_usuário == 2:
+    print(f'Você escolheu a opção {escolha_usuário} para listar o seu restaurante!')
 
-if escolha_usuário == 3:
-    print(f'Você escolheu ativar o seu restaurante!')
+elif escolha_usuário == 3:
+    print(f'Você escolheu a opção {escolha_usuário} para ativar o seu restaurante!')
+
+elif escolha_usuário == 4:
+    print(f'Você escolheu a opção {escolha_usuário} para sair do programa.')
+
+else: 
+    print(f'Você escolheu a opção {escolha_usuário}. Não temos essa opção!')
