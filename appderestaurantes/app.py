@@ -20,28 +20,39 @@ def finalizar_programa():
     os.system('cls')
     print('Programa encerrado')
 
-def escolher_opções(escolha_usuário):
+def opção_inválida():
+    print('Opção inválida!\n')
+    input('Digite qualquer tecla para voltar ao menu principal ')
+    main()  # Aqui você chama a função que exibe o menu principal.
 
-    if escolha_usuário == 1 :
-        print(f'Você escolheu a opção {escolha_usuário} para cadastrar o seu restaurante no nosso sistema, seja bem-vindo!')
+def escolher_opções():
+    try:
+        escolha_usuário = input('Digite a sua opção: ')
 
-    elif escolha_usuário == 2:
-        print(f'Você escolheu a opção {escolha_usuário} para listar o seu restaurante!')
+        if escolha_usuário == '1':
+            print(f'Você escolheu a opção {escolha_usuário} para cadastrar o seu restaurante no nosso sistema, seja bem-vindo!')
 
-    elif escolha_usuário == 3:
-        print(f'Você escolheu a opção {escolha_usuário} para ativar o seu restaurante!')
+        elif escolha_usuário == '2':
+            print(f'Você escolheu a opção {escolha_usuário} para listar o seu restaurante!')
 
-    elif escolha_usuário == 4:
-        finalizar_programa()
+        elif escolha_usuário == '3':
+            print(f'Você escolheu a opção {escolha_usuário} para ativar o seu restaurante!')
 
-    else: 
-        print(f'Você escolheu a opção {escolha_usuário}. Não temos essa opção!')
+        elif escolha_usuário == '4':
+            finalizar_programa()
+
+        else:
+            opção_inválida()
+      
+    except:
+        opção_inválida()
 
 def main():
+    os.system('cls')
     exibir_nome_do_app()
     exibir_opções()
-    escolha_usuário = int(input('Digite a sua opção: '))
-    escolher_opções(escolha_usuário)
+    
+    escolher_opções()
 
 if __name__ == '__main__':
     main()
