@@ -25,9 +25,11 @@ def cadastrar_restaurante():
     qnt_restaurante = int(input('\nVocê quer cadastrar quantos restaurantes? '))
 
     for i in range(1 ,  qnt_restaurante + 1 ):
-
-        restaurante = str(input(F'Digite o nome do {i}ª restaurante: ')) .strip() .upper()
-        print(f'{restaurante.title()} cadastrado com sucesso!\n')
+        restaurante = {}
+        restaurante['nome'] = str(input(F'Digite o nome do restaurante: ')) .strip() .upper()
+        restaurante['categoria'] = str(input('Digite a categoria do restaurante: ')) .strip() .upper()
+        restaurante['ativo'] = True
+        print(f'{restaurante['nome'].title()} cadastrado com sucesso!\n')
         restaurantes.append(restaurante)
     voltar_menu()
 
@@ -36,7 +38,7 @@ def listar_restaurante():
     print('Seja bem-vindo a área de listagem dos restaurantes! \n')
     print('Os restaurantes disponíveis para serem listados são: \n ' )
     for restaurante in restaurantes:
-        print(restaurante )
+        print(restaurante['nome'] )
 
     while True:
 
@@ -49,7 +51,23 @@ def listar_restaurante():
         else:
             print('Você digitou um restaurante que não temos no nosso sistema, tente novamente!! \n')
     
-    
+    voltar_menu()
+
+def alterar_estado():
+
+    print('Alterando estado do restaurante!\n')
+    nome_restaurante = str(input('Digite o nome do restaurante que queira ativar ou desativar: ')).strip() .upper()
+    restaurante_encontrado = False
+
+    for restaurante in restaurantes:
+        if nome_restaurante == restaurante['nome']:
+            restaurante_encontrado = True
+            restaurante['ativo'] = not restaurante['ativo']
+            if restaurante['ativo'] == True:
+                print('O restaurante foi ativado com sucesso!\n')
+            else:
+                print('O restaurante foi desativado com sucesso!\n')
+    voltar_menu()
 
 def voltar_menu():
         input('Digite qualquer tecla para voltar ao menu principal! ')
@@ -75,7 +93,7 @@ def escolher_opções():
             listar_restaurante()
 
         elif escolha_usuário == '3':
-            print(f'Você escolheu a opção {escolha_usuário} para ativar o seu restaurante!')
+            alterar_estado()
 
         elif escolha_usuário == '4':
             finalizar_programa()
