@@ -24,13 +24,36 @@ def cadastrar_restaurante():
           ''')
     qnt_restaurante = int(input('\nVocê quer cadastrar quantos restaurantes? '))
 
-    for i in range(1 , qnt_restaurante + 1):
+    for i in range(1 ,  qnt_restaurante + 1 ):
 
-        restaurante = str(input(F'Digite o nome do {i}ª restaurante: '))
-        print(f'{restaurante} cadastrado com sucesso!\n')
+        restaurante = str(input(F'Digite o nome do {i}ª restaurante: ')) .strip() .upper()
+        print(f'{restaurante.title()} cadastrado com sucesso!\n')
         restaurantes.append(restaurante)
-    input('Digite qualquer tecla para voltar ao menu principal! ')
-    main()
+    voltar_menu()
+
+def listar_restaurante():
+    os.system('cls')
+    print('Seja bem-vindo a área de listagem dos restaurantes! \n')
+    print('Os restaurantes disponíveis para serem listados são: \n ' )
+    for restaurante in restaurantes:
+        print(restaurante )
+
+    while True:
+
+        escolha_listagem = str(input('\nQual restaurante você deseja listar? \n')) .strip() .upper()
+
+        if escolha_listagem in restaurantes:
+            print(f'Você escolheu listar o restaurante {escolha_listagem.title()}')
+            break
+
+        else:
+            print('Você digitou um restaurante que não temos no nosso sistema, tente novamente!! \n')
+    
+    
+
+def voltar_menu():
+        input('Digite qualquer tecla para voltar ao menu principal! ')
+        main()
 
 def finalizar_programa():
     os.system('cls')
@@ -49,7 +72,7 @@ def escolher_opções():
             cadastrar_restaurante()
 
         elif escolha_usuário == '2':
-            print(f'Você escolheu a opção {escolha_usuário} para listar o seu restaurante!')
+            listar_restaurante()
 
         elif escolha_usuário == '3':
             print(f'Você escolheu a opção {escolha_usuário} para ativar o seu restaurante!')
