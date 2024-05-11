@@ -1,4 +1,6 @@
 import os
+restaurantes = []
+
 def exibir_nome_do_app():
     print('''
         
@@ -15,6 +17,20 @@ def exibir_opções():
     print('[3] para ativar restaurante')
     print('[4] para sair\n')
 
+def cadastrar_restaurante():
+    os.system('cls')
+    print('''
+    Seja bem-vindo a área de cadastro de restaurantes!
+          ''')
+    qnt_restaurante = int(input('\nVocê quer cadastrar quantos restaurantes? '))
+
+    for i in range(1 , qnt_restaurante + 1):
+
+        restaurante = str(input(F'Digite o nome do {i}ª restaurante: '))
+        print(f'{restaurante} cadastrado com sucesso!\n')
+        restaurantes.append(restaurante)
+    input('Digite qualquer tecla para voltar ao menu principal! ')
+    main()
 
 def finalizar_programa():
     os.system('cls')
@@ -30,7 +46,7 @@ def escolher_opções():
         escolha_usuário = input('Digite a sua opção: ')
 
         if escolha_usuário == '1':
-            print(f'Você escolheu a opção {escolha_usuário} para cadastrar o seu restaurante no nosso sistema, seja bem-vindo!')
+            cadastrar_restaurante()
 
         elif escolha_usuário == '2':
             print(f'Você escolheu a opção {escolha_usuário} para listar o seu restaurante!')
