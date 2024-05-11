@@ -36,25 +36,16 @@ def cadastrar_restaurante():
 def listar_restaurante():
     os.system('cls')
     print('Seja bem-vindo a área de listagem dos restaurantes! \n')
-    print('Os restaurantes disponíveis para serem listados são: \n ' )
+    print('Os restaurantes listados são: \n ')
+
     for restaurante in restaurantes:
-        print(restaurante['nome'] )
+        ativado_desativado = 'ATIVADO' if restaurante['ativo'] else 'DESATIVADO'
+        print(restaurante['nome'], '|', restaurante['categoria'], '|', ativado_desativado)
 
-    while True:
-
-        escolha_listagem = str(input('\nQual restaurante você deseja listar? \n')) .strip() .upper()
-
-        if escolha_listagem in restaurantes:
-            print(f'Você escolheu listar o restaurante {escolha_listagem.title()}')
-            break
-
-        else:
-            print('Você digitou um restaurante que não temos no nosso sistema, tente novamente!! \n')
-    
     voltar_menu()
 
 def alterar_estado():
-
+    os.system('cls')
     print('Alterando estado do restaurante!\n')
     nome_restaurante = str(input('Digite o nome do restaurante que queira ativar ou desativar: ')).strip() .upper()
     restaurante_encontrado = False
@@ -67,6 +58,9 @@ def alterar_estado():
                 print('O restaurante foi ativado com sucesso!\n')
             else:
                 print('O restaurante foi desativado com sucesso!\n')
+
+        if not restaurante_encontrado:
+            print('O restaurante não foi encontrado!\n')
     voltar_menu()
 
 def voltar_menu():
@@ -83,6 +77,7 @@ def opção_inválida():
     main()  # Aqui você chama a função que exibe o menu principal.
 
 def escolher_opções():
+
     try:
         escolha_usuário = input('Digite a sua opção: ')
 
